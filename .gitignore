@@ -1,0 +1,13 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Django database
+db.sqlite3
+
+# PDFs (large files)
+*.pdf
+
+# OS files
+.DS_Store
+Thumbs.db
