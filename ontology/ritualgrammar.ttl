@@ -1,0 +1,436 @@
+@prefix : <https://www.ritualgrammar.org/ontology/> .
+@prefix np: <https://www.ritualgrammar.org/ontology/nepal/> .
+@prefix rg: <https://www.ritualgrammar.org/ontology/> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@base <https://www.ritualgrammar.org/ontology/> .
+
+<https://www.ritualgrammar.org/ontology/> rdf:type owl:Ontology ;
+                                           owl:imports crm: ;
+                                           owl:versionInfo "beta-1.0" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+skos:altLabel rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#broader
+skos:broader rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#definition
+skos:definition rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#hasTopConcept
+skos:hasTopConcept rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#inScheme
+skos:inScheme rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+skos:prefLabel rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#topConceptOf
+skos:topConceptOf rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.w3.org/2004/02/skos/core#Concept
+skos:Concept rdf:type owl:Class .
+
+
+###  http://www.w3.org/2004/02/skos/core#ConceptScheme
+skos:ConceptScheme rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://www.ritualgrammar.org/ontology/ActorRole
+rg:ActorRole rdf:type owl:NamedIndividual ,
+                      crm:E55_Type ,
+                      skos:Concept ;
+             skos:inScheme rg:RitualGrammarScheme ;
+             skos:prefLabel "Actor role"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/ApplyingVermilion
+rg:ApplyingVermilion rdf:type owl:NamedIndividual ,
+                              crm:E55_Type ,
+                              skos:Concept ;
+                     skos:broader rg:Ritual ;
+                     skos:inScheme rg:RitualGrammarScheme ;
+                     skos:prefLabel "Applying vermilion"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/Bride
+rg:Bride rdf:type owl:NamedIndividual ,
+                  crm:E21_Person ;
+         crm:P2_has_type rg:BrideRole ;
+         rdfs:label "Bride"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/BrideRole
+rg:BrideRole rdf:type owl:NamedIndividual ,
+                      crm:E55_Type ,
+                      skos:Concept ;
+             skos:broader rg:ActorRole ;
+             skos:inScheme rg:RitualGrammarScheme ;
+             skos:prefLabel "Bride role"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/BuddhistMantraRole
+rg:BuddhistMantraRole rdf:type owl:NamedIndividual ,
+                               crm:E55_Type ,
+                               skos:Concept ;
+                      skos:broader rg:MantraRole ;
+                      skos:inScheme rg:RitualGrammarScheme ;
+                      skos:prefLabel "Buddhisht Mantra role"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/BuddhistMarriageRitual
+rg:BuddhistMarriageRitual rdf:type owl:NamedIndividual ,
+                                   crm:E55_Type ,
+                                   skos:Concept ;
+                          skos:broader rg:BuddhistRitual ,
+                                       rg:MarriageRitual ;
+                          skos:inScheme rg:RitualGrammarScheme ;
+                          skos:prefLabel "Buddhist marriage ritual"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/BuddhistRitual
+rg:BuddhistRitual rdf:type owl:NamedIndividual ,
+                           crm:E55_Type ,
+                           skos:Concept ;
+                  skos:broader rg:Ritual ;
+                  skos:inScheme rg:RitualGrammarScheme ;
+                  skos:prefLabel "Buddhist ritual"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/ChantingBuddhistMantra
+rg:ChantingBuddhistMantra rdf:type owl:NamedIndividual ,
+                                   crm:E7_Activity ;
+                          crm:P14_carried_out_by rg:Gubaju ;
+                          crm:P2_has_type rg:BuddhistMantraRole ;
+                          rdfs:label "Chanting Mantras:Buddhist"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/ChantingHinduMantra
+rg:ChantingHinduMantra rdf:type owl:NamedIndividual ,
+                                crm:E7_Activity ;
+                       crm:P14_carried_out_by rg:Priest ;
+                       crm:P2_has_type rg:HinduMantraRole ;
+                       rdfs:label "Chanting Mantras:Hindu"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/ChantingMantras
+rg:ChantingMantras rdf:type owl:NamedIndividual ;
+                   crm:P120_occurs_before rg:VermilionApplication .
+
+
+###  https://www.ritualgrammar.org/ontology/Egg
+rg:Egg rdf:type owl:NamedIndividual ,
+                crm:E57_Material ;
+       rdfs:label "Egg"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/Groom
+rg:Groom rdf:type owl:NamedIndividual ,
+                  crm:E21_Person ;
+         crm:P2_has_type rg:GroomRole ;
+         rdfs:label "Groom"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/GroomRole
+rg:GroomRole rdf:type owl:NamedIndividual ,
+                      crm:E55_Type ,
+                      skos:Concept ;
+             skos:broader rg:ActorRole ;
+             skos:inScheme rg:RitualGrammarScheme ;
+             skos:prefLabel "Groom role"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/Gubaju
+rg:Gubaju rdf:type owl:NamedIndividual ,
+                   crm:E21_Person ;
+          crm:P2_has_type rg:GubajuRole ;
+          rdfs:label "Buddhist Gubaju"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/GubajuRole
+rg:GubajuRole rdf:type owl:NamedIndividual ,
+                       crm:E55_Type ,
+                       skos:Concept ;
+              skos:broader rg:ActorRole ;
+              skos:inScheme rg:RitualGrammarScheme ;
+              skos:prefLabel "Buddhist Gubaju role"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/HinduMantraRole
+rg:HinduMantraRole rdf:type owl:NamedIndividual ,
+                            crm:E55_Type ,
+                            skos:Concept ;
+                   skos:broader rg:MantraRole ;
+                   skos:inScheme rg:RitualGrammarScheme ;
+                   skos:prefLabel "Hindu Mantra role"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/HinduMarriageRitual
+rg:HinduMarriageRitual rdf:type owl:NamedIndividual ,
+                                crm:E55_Type ,
+                                skos:Concept ;
+                       skos:broader rg:HinduRitual ,
+                                    rg:MarriageRitual ;
+                       skos:inScheme rg:RitualGrammarScheme ;
+                       skos:prefLabel "Hindu marriage ritual"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/HinduRitual
+rg:HinduRitual rdf:type owl:NamedIndividual ,
+                        crm:E55_Type ,
+                        skos:Concept ;
+               skos:broader rg:Ritual ;
+               skos:inScheme rg:RitualGrammarScheme ;
+               skos:prefLabel "Hindu ritual"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/MantraRole
+rg:MantraRole rdf:type owl:NamedIndividual ,
+                       crm:E55_Type ,
+                       skos:Concept ;
+              skos:inScheme rg:RitualGrammarScheme ;
+              skos:prefLabel "Mantra role"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/MarriageRitual
+rg:MarriageRitual rdf:type owl:NamedIndividual ,
+                           crm:E55_Type ,
+                           skos:Concept ;
+                  skos:broader rg:Ritual ;
+                  skos:inScheme rg:RitualGrammarScheme ;
+                  skos:prefLabel "Marriage ritual"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/OfferingToDeity
+rg:OfferingToDeity rdf:type owl:NamedIndividual ,
+                            crm:E7_Activity ;
+                   crm:P120_occurs_before rg:ChantingMantras ;
+                   crm:P120i_occurs_after rg:ChantingHinduMantra ;
+                   crm:P14_carried_out_by rg:Bride ,
+                                          rg:Groom ;
+                   crm:P9i_forms_part_of np:NewarHinduSwayambharaEvent ;
+                   rdfs:label "Offering to deity"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/ParentRole
+rg:ParentRole rdf:type owl:NamedIndividual ,
+                       crm:E55_Type ,
+                       skos:Concept ;
+              skos:broader rg:ActorRole ;
+              skos:inScheme rg:RitualGrammarScheme ;
+              skos:prefLabel "Parent role"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/Parents
+rg:Parents rdf:type owl:NamedIndividual ,
+                    crm:E21_Person ;
+           crm:P2_has_type rg:ParentRole ;
+           rdfs:label "Parents: Bride & Groom"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/Priest
+rg:Priest rdf:type owl:NamedIndividual ,
+                   crm:E21_Person ;
+          crm:P2_has_type rg:PriestRole ;
+          rdfs:label "Hindu Priest"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/PriestRole
+rg:PriestRole rdf:type owl:NamedIndividual ,
+                       crm:E55_Type ,
+                       skos:Concept ;
+              skos:broader rg:ActorRole ;
+              skos:inScheme rg:RitualGrammarScheme ;
+              skos:prefLabel "Hindu priest role"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/Ritual
+rg:Ritual rdf:type owl:NamedIndividual ,
+                   crm:E55_Type ,
+                   skos:Concept ;
+          skos:definition "A formalized sequence of actions performed according to cultural or religious tradition."@en ;
+          skos:inScheme rg:RitualGrammarScheme ;
+          skos:prefLabel "Ritual"@en ;
+          skos:topConceptOf rg:RitualGrammarScheme .
+
+
+###  https://www.ritualgrammar.org/ontology/RitualGrammarScheme
+rg:RitualGrammarScheme rdf:type owl:NamedIndividual ,
+                                skos:ConceptScheme ;
+                       skos:definition "A SKOS-based controlled vocabulary aligned with CIDOC-CRM for modeling ritual types and classifications."@en ;
+                       skos:hasTopConcept rg:Ritual ;
+                       skos:prefLabel "Ritual Grammar Controlled Vocabulary"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/SagunActivity
+rg:SagunActivity rdf:type owl:NamedIndividual ,
+                          crm:E7_Activity ;
+                 crm:P14_carried_out_by rg:Priest ;
+                 crm:P16_used_specific_object rg:Egg ;
+                 rdfs:label "Auspicious Egg Offering"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/SagunEvent
+rg:SagunEvent rdf:type owl:NamedIndividual ,
+                       crm:E5_Event ;
+              crm:P11_had_participant rg:Bride ,
+                                      rg:Groom ,
+                                      rg:Parents ;
+              crm:P2_has_type rg:SagunRitual ;
+              crm:P9_consists_of rg:SagunActivity ;
+              rdfs:label "Sagun offering ceremony"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/SagunRitual
+rg:SagunRitual rdf:type owl:NamedIndividual ,
+                        crm:E55_Type ,
+                        skos:Concept ;
+               skos:broader rg:MarriageRitual ;
+               skos:inScheme rg:RitualGrammarScheme ;
+               skos:prefLabel "Sagun offering ritual"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/SwayambharaRitual
+rg:SwayambharaRitual rdf:type owl:NamedIndividual ,
+                              crm:E55_Type ,
+                              skos:Concept ;
+                     skos:altLabel "Swayamvara"@en ;
+                     skos:broader rg:HinduMarriageRitual ;
+                     skos:inScheme rg:RitualGrammarScheme ;
+                     skos:prefLabel "Swayambhara ritual"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/Vermilion
+rg:Vermilion rdf:type owl:NamedIndividual ,
+                      crm:E57_Material ;
+             rdfs:label "Vermilion"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/VermilionApplication
+rg:VermilionApplication rdf:type owl:NamedIndividual ,
+                                 crm:E7_Activity ;
+                        crm:P14_carried_out_by rg:Groom ;
+                        crm:P16_used_specific_object rg:Vermilion ;
+                        crm:P9i_forms_part_of np:NewarHinduSwayambharaEvent ;
+                        rdfs:label "Application of vermilion"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/nepal/KhasBrahminHinduMarriageRitual
+np:KhasBrahminHinduMarriageRitual rdf:type owl:NamedIndividual ,
+                                           crm:E55_Type ,
+                                           skos:Concept ;
+                                  skos:broader rg:HinduMarriageRitual ;
+                                  skos:inScheme rg:RitualGrammarScheme ;
+                                  skos:prefLabel "Khas-Brahmin Hindu marriage ritual"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/nepal/KhasBrahminSwayambharaRitual
+np:KhasBrahminSwayambharaRitual rdf:type owl:NamedIndividual ,
+                                         crm:E55_Type ,
+                                         skos:Concept ;
+                                skos:broader rg:SwayambharaRitual ,
+                                             np:KhasBrahminHinduMarriageRitual ;
+                                skos:inScheme rg:RitualGrammarScheme ;
+                                skos:prefLabel "Khas-Brahmin Swayambhara ritual"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/nepal/NewarBuddhistMarriageEvent
+np:NewarBuddhistMarriageEvent rdf:type owl:NamedIndividual ,
+                                       crm:E5_Event ;
+                              crm:P10i_contains rg:SagunEvent ;
+                              crm:P11_had_participant np:NewarCommunity ;
+                              crm:P2_has_type np:NewarBuddhistMarriageRitual ;
+                              crm:P9_consists_of rg:ChantingBuddhistMantra ;
+                              rdfs:label "Newar Buddhist marriage"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/nepal/NewarBuddhistMarriageRitual
+np:NewarBuddhistMarriageRitual rdf:type owl:NamedIndividual ,
+                                        crm:E55_Type ,
+                                        skos:Concept ;
+                               skos:broader rg:BuddhistMarriageRitual ;
+                               skos:inScheme rg:RitualGrammarScheme ;
+                               skos:prefLabel "Newar Buddhist marriage ritual"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/nepal/NewarCommunity
+np:NewarCommunity rdf:type owl:NamedIndividual ,
+                           crm:E74_Group ;
+                  rdfs:label "Newar community"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/nepal/NewarHinduMarriageEvent
+np:NewarHinduMarriageEvent rdf:type owl:NamedIndividual ,
+                                    crm:E5_Event ;
+                           crm:P10i_contains rg:SagunEvent ,
+                                             np:NewarHinduSwayambharaEvent ;
+                           crm:P11_had_participant np:NewarCommunity ;
+                           crm:P2_has_type rg:HinduMarriageRitual ;
+                           rdfs:label "Newar Hindu marriage"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/nepal/NewarHinduMarriageRitual
+np:NewarHinduMarriageRitual rdf:type owl:NamedIndividual ,
+                                     crm:E55_Type ,
+                                     skos:Concept ;
+                            skos:broader rg:HinduMarriageRitual ;
+                            skos:inScheme rg:RitualGrammarScheme ;
+                            skos:prefLabel "Newar Hindu marriage ritual"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/nepal/NewarHinduSagunEvent
+np:NewarHinduSagunEvent rdf:type owl:NamedIndividual ,
+                                 crm:E5_Event ;
+                        crm:P11_had_participant rg:Priest ;
+                        crm:P9_consists_of rg:SagunEvent ;
+                        rdfs:label "Sagun offering ceremony:Newar"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/nepal/NewarHinduSwayambharaEvent
+np:NewarHinduSwayambharaEvent rdf:type owl:NamedIndividual ,
+                                       crm:E5_Event ;
+                              crm:P11_had_participant np:NewarCommunity ;
+                              crm:P2_has_type np:NewarSwayambharaRitual ;
+                              crm:P9_consists_of rg:ChantingHinduMantra ,
+                                                 rg:OfferingToDeity ,
+                                                 rg:VermilionApplication ;
+                              crm:P9i_forms_part_of np:NewarHinduMarriageEvent ;
+                              rdfs:label "Newar Swayambhara ceremony"@en .
+
+
+###  https://www.ritualgrammar.org/ontology/nepal/NewarSwayambharaRitual
+np:NewarSwayambharaRitual rdf:type owl:NamedIndividual ,
+                                   crm:E55_Type ,
+                                   skos:Concept ;
+                          skos:broader rg:SwayambharaRitual ,
+                                       np:NewarHinduMarriageRitual ;
+                          skos:inScheme rg:RitualGrammarScheme ;
+                          skos:prefLabel "Newar Swayambhara ritual"@en .
+
+

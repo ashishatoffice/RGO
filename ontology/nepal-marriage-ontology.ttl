@@ -1,0 +1,598 @@
+@prefix : <http://example.org/nepal-marriage-rituals#> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix crmdig: <http://www.ics.forth.gr/isl/CRMdig/> .
+@prefix crmsci: <http://www.ics.forth.gr/isl/CRMsci/> .
+@base <http://example.org/nepal-marriage-rituals#> .
+
+<http://example.org/nepal-marriage-rituals#> rdf:type owl:Ontology ;
+                                              owl:imports crm: ,
+                                                          <http://www.cidoc-crm.org/extensions/crmsci/owl/2.0/> ,
+                                                          <http://www.w3.org/ns/prov-20130430> ;
+                                              rdfs:comment "CIDOC-CRM, CRMsci, CRMdig, PROV-O compliant OWL DL ontology modeling Hindu and Buddhist marriage rituals in Nepal" ;
+                                              rdfs:label "Nepal Hindu and Buddhist Marriage Ritual Ontology" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.cidoc-crm.org/cidoc-crm/P107i_is_current_or_former_member_of
+crm:P107i_is_current_or_former_member_of rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.cidoc-crm.org/cidoc-crm/P10_falls_within
+crm:P10_falls_within rdf:type owl:ObjectProperty ;
+                     rdfs:domain crm:E7_Activity ;
+                     rdfs:range crm:E7_Activity .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by
+crm:P14_carried_out_by rdf:type owl:ObjectProperty ;
+                       owl:inverseOf crm:P14i_performed ;
+                       rdfs:domain crm:E7_Activity ;
+                       rdfs:range crm:E39_Actor .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/P16_used_specific_object
+crm:P16_used_specific_object rdf:type owl:ObjectProperty ;
+                             rdfs:domain crm:E7_Activity ;
+                             rdfs:range crm:E22_Man-Made_Object .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/P2_has_type
+crm:P2_has_type rdf:type owl:ObjectProperty ;
+                rdfs:domain crm:E1_CRM_Entity ;
+                rdfs:range crm:E55_Type .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span
+crm:P4_has_time-span rdf:type owl:ObjectProperty ;
+                     rdfs:domain crm:E1_CRM_Entity ;
+                     rdfs:range crm:E52_Time-Span .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/P67_refers_to
+crm:P67_refers_to rdf:type owl:ObjectProperty ;
+                  rdfs:domain crm:E1_CRM_Entity ;
+                  rdfs:range crm:E1_CRM_Entity .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/P9_consists_of
+crm:P9_consists_of rdf:type owl:ObjectProperty ;
+                   owl:inverseOf crm:P9i_forms_part_of ;
+                   rdfs:domain crm:E7_Activity ;
+                   rdfs:range crm:E7_Activity .
+
+
+###  http://www.ics.forth.gr/isl/CRMdig/L10i_was_input_of
+crmdig:L10i_was_input_of rdf:type owl:ObjectProperty ;
+                         rdfs:domain crm:E22_Man-Made_Object ;
+                         rdfs:range crmdig:D2_Digitization_Process .
+
+
+###  http://www.ics.forth.gr/isl/CRMdig/L1_digitized
+crmdig:L1_digitized rdf:type owl:ObjectProperty ;
+                    rdfs:domain crmdig:D2_Digitization_Process ;
+                    rdfs:range crm:E73_Information_Object .
+
+
+###  http://www.ics.forth.gr/isl/CRMsci/O16_observed
+crmsci:O16_observed rdf:type owl:ObjectProperty ;
+                    rdfs:domain crmsci:S4_Observation ;
+                    rdfs:range crm:E7_Activity .
+
+
+###  http://www.ics.forth.gr/isl/CRMsci/O21_has_result
+crmsci:O21_has_result rdf:type owl:ObjectProperty ;
+                      rdfs:domain crmsci:S4_Observation ;
+                      rdfs:range crmsci:S6_Data_Evaluation .
+
+
+###  http://www.ics.forth.gr/isl/CRMsci/O7_observed_by
+crmsci:O7_observed_by rdf:type owl:ObjectProperty ;
+                      rdfs:domain crmsci:S4_Observation ;
+                      rdfs:range crm:E21_Person .
+
+
+###  http://www.w3.org/ns/prov#wasAssociatedWith
+prov:wasAssociatedWith rdf:type owl:ObjectProperty ;
+                       rdfs:domain prov:Activity ;
+                       rdfs:range prov:Agent .
+
+
+###  http://www.w3.org/ns/prov#wasAttributedTo
+prov:wasAttributedTo rdf:type owl:ObjectProperty ;
+                     rdfs:domain prov:Entity ;
+                     rdfs:range prov:Agent .
+
+
+###  http://www.w3.org/ns/prov#wasDerivedFrom
+prov:wasDerivedFrom rdf:type owl:ObjectProperty ;
+                    rdfs:domain prov:Entity ;
+                    rdfs:range prov:Entity .
+
+
+###  http://www.w3.org/ns/prov#wasGeneratedBy
+prov:wasGeneratedBy rdf:type owl:ObjectProperty ;
+                    rdfs:domain prov:Entity ;
+                    rdfs:range prov:Activity .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.cidoc-crm.org/cidoc-crm/P82a_begin_of_the_begin
+crm:P82a_begin_of_the_begin rdf:type owl:DatatypeProperty ;
+                            rdfs:domain crm:E52_Time-Span ;
+                            rdfs:range xsd:date .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/P82b_end_of_the_end
+crm:P82b_end_of_the_end rdf:type owl:DatatypeProperty ;
+                        rdfs:domain crm:E52_Time-Span ;
+                        rdfs:range xsd:date .
+
+
+###  http://www.w3.org/ns/prov#generatedAtTime
+prov:generatedAtTime rdf:type owl:DatatypeProperty ;
+                     rdfs:domain prov:Activity ;
+                     rdfs:range xsd:date .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.cidoc-crm.org/cidoc-crm/E22_Man-Made_Object
+crm:E22_Man-Made_Object rdf:type owl:Class .
+
+
+###  http://www.ics.forth.gr/isl/CRMdig/D1_Digital_Object
+crmdig:D1_Digital_Object rdf:type owl:Class .
+
+
+###  http://www.ics.forth.gr/isl/CRMdig/D2_Digitization_Process
+crmdig:D2_Digitization_Process rdf:type owl:Class .
+
+
+###  http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D10_Software_Execution
+<http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D10_Software_Execution> rdf:type owl:Class .
+
+
+###  http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D11_Digital_Measurement_Event
+<http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D11_Digital_Measurement_Event> rdf:type owl:Class .
+
+
+###  http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D12_Data_Transfer_Event
+<http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D12_Data_Transfer_Event> rdf:type owl:Class .
+
+
+###  http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D13_Digital_Information_Carrier
+<http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D13_Digital_Information_Carrier> rdf:type owl:Class .
+
+
+###  http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D14_Software
+<http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D14_Software> rdf:type owl:Class .
+
+
+###  http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D1_Digital_Object
+<http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D1_Digital_Object> rdf:type owl:Class .
+
+
+###  http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D21_Person_Name
+<http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D21_Person_Name> rdf:type owl:Class .
+
+
+###  http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D23_Room
+<http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D23_Room> rdf:type owl:Class .
+
+
+###  http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D29_Annotation_Object
+<http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D29_Annotation_Object> rdf:type owl:Class .
+
+
+###  http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D2_Digitization_Process
+<http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D2_Digitization_Process> rdf:type owl:Class .
+
+
+###  http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D30_Annotation_Event
+<http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D30_Annotation_Event> rdf:type owl:Class .
+
+
+###  http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D35_Area
+<http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D35_Area> rdf:type owl:Class .
+
+
+###  http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D3_Formal_Derivation
+<http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D3_Formal_Derivation> rdf:type owl:Class .
+
+
+###  http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D7_Digital_Machine_Event
+<http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D7_Digital_Machine_Event> rdf:type owl:Class .
+
+
+###  http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D8_Digital_Device
+<http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D8_Digital_Device> rdf:type owl:Class .
+
+
+###  http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D9_Data_Object
+<http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/D9_Data_Object> rdf:type owl:Class .
+
+
+###  http://www.ics.forth.gr/isl/CRMsci/S4_Observation
+crmsci:S4_Observation rdf:type owl:Class .
+
+
+###  http://www.ics.forth.gr/isl/CRMsci/S6_Data_Evaluation
+crmsci:S6_Data_Evaluation rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://example.org/nepal-marriage-rituals#ApplyVermilion
+:ApplyVermilion rdf:type owl:NamedIndividual ,
+                         crm:E7_Activity ;
+                crm:P10_falls_within :HinduMarriage ,
+                                     :Newar__Marriage_Ritual ,
+                                     :ParbateBrahminMarriageModern ,
+                                     :ParbateChettriMarriageModern ;
+                crm:P14_carried_out_by :Groom ;
+                crm:P16_used_specific_object :VermilionPowder ;
+                crm:P2_has_type :MicroRitual ;
+                rdfs:label "Applying Vermilion to Bride" .
+
+
+###  http://example.org/nepal-marriage-rituals#AudioRecording2019
+:AudioRecording2019 rdf:type owl:NamedIndividual ,
+                             crmdig:D1_Digital_Object ;
+                    crmdig:L10i_was_input_of :Digitization2019 .
+
+
+###  http://example.org/nepal-marriage-rituals#BrahminMarriage
+:BrahminMarriage rdf:type owl:NamedIndividual ,
+                          crm:E55_Type ;
+                 crm:P2_has_type :ParbateMarriage ;
+                 rdfs:label "Parbate Brahmin Marriage Ritual" .
+
+
+###  http://example.org/nepal-marriage-rituals#Bride
+:Bride rdf:type owl:NamedIndividual ,
+                prov:Person .
+
+
+###  http://example.org/nepal-marriage-rituals#BrideFather
+:BrideFather rdf:type owl:NamedIndividual ,
+                      crm:E21_Person ;
+             crm:P2_has_type :HouseholdRitualAuthority .
+
+
+###  http://example.org/nepal-marriage-rituals#BrideMother
+:BrideMother rdf:type owl:NamedIndividual ,
+                      crm:E21_Person ;
+             crm:P2_has_type :HouseholdRitualAuthority .
+
+
+###  http://example.org/nepal-marriage-rituals#BuddhistMarriage
+:BuddhistMarriage rdf:type owl:NamedIndividual ,
+                           crm:E55_Type ;
+                  rdfs:label "Buddhist Marriage" .
+
+
+###  http://example.org/nepal-marriage-rituals#ChettriMarriage
+:ChettriMarriage rdf:type owl:NamedIndividual ,
+                          crm:E55_Type ;
+                 crm:P2_has_type :ParbateMarriage ;
+                 rdfs:label "Parbate Chettri Marriage Ritual" .
+
+
+###  http://example.org/nepal-marriage-rituals#ConstitutiveRitual
+:ConstitutiveRitual rdf:type owl:NamedIndividual ,
+                             crm:E55_Type ;
+                    rdfs:label "Constitutive Ritual Event" .
+
+
+###  http://example.org/nepal-marriage-rituals#Digitization2019
+:Digitization2019 rdf:type owl:NamedIndividual ,
+                           crmdig:D2_Digitization_Process ;
+                  crm:P14_carried_out_by :Researcher ;
+                  crmdig:L1_digitized :KhataMeaning .
+
+
+###  http://example.org/nepal-marriage-rituals#Evaluation_KhataOrigin
+:Evaluation_KhataOrigin rdf:type owl:NamedIndividual ,
+                                 crmsci:S6_Data_Evaluation ;
+                        crm:P67_refers_to :MahayanaTradition .
+
+
+###  http://example.org/nepal-marriage-rituals#Groom
+:Groom rdf:type owl:NamedIndividual ,
+                prov:Person .
+
+
+###  http://example.org/nepal-marriage-rituals#GroomFather
+:GroomFather rdf:type owl:NamedIndividual ,
+                      crm:E21_Person ;
+             crm:P2_has_type :HouseholdRitualAuthority .
+
+
+###  http://example.org/nepal-marriage-rituals#GroomMother
+:GroomMother rdf:type owl:NamedIndividual ,
+                      crm:E21_Person ;
+             crm:P2_has_type :HouseholdRitualAuthority .
+
+
+###  http://example.org/nepal-marriage-rituals#GuthiPriest
+:GuthiPriest rdf:type owl:NamedIndividual ,
+                      crm:E21_Person ;
+             crm:P107i_is_current_or_former_member_of :SiGuthi .
+
+
+###  http://example.org/nepal-marriage-rituals#HinduMarriage
+:HinduMarriage rdf:type owl:NamedIndividual ,
+                        crm:E5_Event ;
+               rdfs:label "Hindu Marriage" .
+
+
+###  http://example.org/nepal-marriage-rituals#HinduPriest
+:HinduPriest rdf:type owl:NamedIndividual ,
+                      crm:E21_Person ;
+             crm:P2_has_type :VedicTradition .
+
+
+###  http://example.org/nepal-marriage-rituals#HouseholdRitualAuthority
+:HouseholdRitualAuthority rdf:type owl:NamedIndividual ,
+                                   crm:E55_Type ;
+                          rdfs:label "Household Ritual Authority" .
+
+
+###  http://example.org/nepal-marriage-rituals#Interview2019
+:Interview2019 rdf:type owl:NamedIndividual ,
+                        prov:Activity ;
+               prov:wasAssociatedWith :Researcher ;
+               prov:generatedAtTime "2019-05-12"^^xsd:date .
+
+
+###  http://example.org/nepal-marriage-rituals#Kanyadaan
+:Kanyadaan rdf:type owl:NamedIndividual ,
+                    crm:E7_Activity ;
+           crm:P10_falls_within :HinduMarriage ,
+                                :ParbateBrahminMarriageModern ,
+                                :ParbateChettriMarriageModern ;
+           crm:P14_carried_out_by :BrideFather ,
+                                  :BrideMother ;
+           crm:P16_used_specific_object :SacredWater ;
+           crm:P2_has_type :MicroRitual .
+
+
+###  http://example.org/nepal-marriage-rituals#Khata
+:Khata rdf:type owl:NamedIndividual ,
+                crm:E22_Man-Made_Object ;
+       rdfs:label "Khata ceremonial scarf" .
+
+
+###  http://example.org/nepal-marriage-rituals#KhataClaim
+:KhataClaim rdf:type owl:NamedIndividual ,
+                     prov:Entity ;
+            prov:wasAttributedTo :GuthiPriest ;
+            prov:wasDerivedFrom :KhataMeaning ;
+            prov:wasGeneratedBy :Interview2019 .
+
+
+###  http://example.org/nepal-marriage-rituals#KhataExchange
+:KhataExchange rdf:type owl:NamedIndividual ,
+                        crm:E7_Activity ;
+               crm:P10_falls_within :Newar__Marriage_Ritual ;
+               crm:P14_carried_out_by :GuthiPriest ;
+               crm:P16_used_specific_object :Khata ;
+               crm:P67_refers_to :KhataMeaning ,
+                                 :MahayanaTradition .
+
+
+###  http://example.org/nepal-marriage-rituals#KhataMeaning
+:KhataMeaning rdf:type owl:NamedIndividual ,
+                       crm:E73_Information_Object ;
+              crm:P2_has_type :OralTradition ;
+              rdfs:label "Meaning of Khata" .
+
+
+###  http://example.org/nepal-marriage-rituals#KinshipRecognition
+:KinshipRecognition rdf:type owl:NamedIndividual ,
+                             crm:E73_Information_Object ;
+                    rdfs:label "Recognition of affinal kinship" .
+
+
+###  http://example.org/nepal-marriage-rituals#LamaChanting
+:LamaChanting rdf:type owl:NamedIndividual ,
+                       crm:E7_Activity ;
+              crm:P10_falls_within :Newar__Marriage_Ritual ;
+              crm:P14_carried_out_by :GuthiPriest ;
+              crm:P67_refers_to :MahayanaTradition .
+
+
+###  http://example.org/nepal-marriage-rituals#MahayanaTradition
+:MahayanaTradition rdf:type owl:NamedIndividual ,
+                            crm:E55_Type ;
+                   rdfs:label "Mahayana Buddhist Tradition" .
+
+
+###  http://example.org/nepal-marriage-rituals#MarriageAgreement
+:MarriageAgreement rdf:type owl:NamedIndividual ,
+                            crm:E73_Information_Object ;
+                   rdfs:label "Social marriage agreement" .
+
+
+###  http://example.org/nepal-marriage-rituals#MarriageRitual
+:MarriageRitual rdf:type owl:NamedIndividual ,
+                         crm:E55_Type ;
+                rdfs:label "Religious Marriage Ritual" .
+
+
+###  http://example.org/nepal-marriage-rituals#MicroRitual
+:MicroRitual rdf:type owl:NamedIndividual ,
+                      crm:E55_Type ;
+             rdfs:label "Micro Ritual" .
+
+
+###  http://example.org/nepal-marriage-rituals#MukhaHernaAune
+:MukhaHernaAune rdf:type owl:NamedIndividual ,
+                         crm:E7_Activity ;
+                crm:P10_falls_within :HinduMarriage ,
+                                     :ParbateBrahminMarriageModern ;
+                crm:P14_carried_out_by :GroomFather ,
+                                       :GroomMother ;
+                crm:P2_has_type :ConstitutiveRitual ;
+                crm:P67_refers_to :KinshipRecognition .
+
+
+###  http://example.org/nepal-marriage-rituals#NewarGuthi
+:NewarGuthi rdf:type owl:NamedIndividual ,
+                     crm:E55_Type ;
+            rdfs:label "Newar Ritual Guthi" .
+
+
+###  http://example.org/nepal-marriage-rituals#Newar__Marriage_Ritual
+:Newar__Marriage_Ritual rdf:type owl:NamedIndividual ,
+                                 crm:E7_Activity ;
+                        crm:P10_falls_within :HinduMarriage ;
+                        crm:P2_has_type :MarriageRitual ;
+                        crm:P4_has_time-span :TimeSpan_PreWedding ;
+                        crm:P9_consists_of :ApplyVermilion ;
+                        rdfs:label "Newar Marriage Ritual" .
+
+
+###  http://example.org/nepal-marriage-rituals#Observation_KhataOrigin
+:Observation_KhataOrigin rdf:type owl:NamedIndividual ,
+                                  crmsci:S4_Observation ;
+                         crmsci:O16_observed :KhataExchange ;
+                         crmsci:O21_has_result :Evaluation_KhataOrigin ;
+                         crmsci:O7_observed_by :Researcher .
+
+
+###  http://example.org/nepal-marriage-rituals#OralTradition
+:OralTradition rdf:type owl:NamedIndividual ,
+                        crm:E55_Type ;
+               rdfs:label "Oral Ritual Knowledge" .
+
+
+###  http://example.org/nepal-marriage-rituals#ParbateBrahminMarriageModern
+:ParbateBrahminMarriageModern rdf:type owl:NamedIndividual ,
+                                       crm:E7_Activity ;
+                              crm:P2_has_type :BrahminMarriage ,
+                                              :MarriageRitual ;
+                              crm:P4_has_time-span :TimeSpan_Contemporary ;
+                              crm:P9_consists_of :ApplyVermilion ,
+                                                 :Kanyadaan ,
+                                                 :MukhaHernaAune ,
+                                                 :Saptapadi .
+
+
+###  http://example.org/nepal-marriage-rituals#ParbateChettriMarriageModern
+:ParbateChettriMarriageModern rdf:type owl:NamedIndividual ,
+                                       crm:E7_Activity ;
+                              crm:P2_has_type :ChettriMarriage ,
+                                              :MarriageRitual ;
+                              crm:P4_has_time-span :TimeSpan_Contemporary ;
+                              crm:P9_consists_of :ApplyVermilion ,
+                                                 :Kanyadaan ,
+                                                 :SupadiLagne .
+
+
+###  http://example.org/nepal-marriage-rituals#ParbateMarriage
+:ParbateMarriage rdf:type owl:NamedIndividual ,
+                          crm:E55_Type ;
+                 rdfs:label "Parbate Marriage Ritual" .
+
+
+###  http://example.org/nepal-marriage-rituals#Researcher
+:Researcher rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/nepal-marriage-rituals#RitualActivity
+:RitualActivity rdf:type owl:NamedIndividual ,
+                         crm:E55_Type .
+
+
+###  http://example.org/nepal-marriage-rituals#SacredWater
+:SacredWater rdf:type owl:NamedIndividual ,
+                      crm:E22_Man-Made_Object ;
+             rdfs:label "Sacred ritual water" .
+
+
+###  http://example.org/nepal-marriage-rituals#Saptapadi
+:Saptapadi rdf:type owl:NamedIndividual ,
+                    crm:E7_Activity ;
+           crm:P10_falls_within :HinduMarriage ,
+                                :ParbateBrahminMarriageModern ;
+           crm:P14_carried_out_by :HinduPriest ;
+           crm:P2_has_type :MicroRitual .
+
+
+###  http://example.org/nepal-marriage-rituals#SiGuthi
+:SiGuthi rdf:type owl:NamedIndividual ,
+                  crm:E74_Group ;
+         crm:P2_has_type :NewarGuthi .
+
+
+###  http://example.org/nepal-marriage-rituals#SupadiLagne
+:SupadiLagne rdf:type owl:NamedIndividual ,
+                      crm:E7_Activity ;
+             crm:P10_falls_within :HinduMarriage ,
+                                  :ParbateChettriMarriageModern ;
+             crm:P14_carried_out_by :BrideFather ,
+                                    :GroomFather ;
+             crm:P2_has_type :ConstitutiveRitual ;
+             crm:P67_refers_to :MarriageAgreement .
+
+
+###  http://example.org/nepal-marriage-rituals#Swayembhar
+:Swayembhar rdf:type owl:NamedIndividual ,
+                     crm:E5_Event ;
+            crm:P10_falls_within :HinduMarriage .
+
+
+###  http://example.org/nepal-marriage-rituals#TimeSpan_Contemporary
+:TimeSpan_Contemporary rdf:type owl:NamedIndividual ,
+                                crm:E52_Time-Span ;
+                       crm:P82a_begin_of_the_begin "2000-01-01"^^xsd:date ;
+                       crm:P82b_end_of_the_end "2100-12-31"^^xsd:date .
+
+
+###  http://example.org/nepal-marriage-rituals#TimeSpan_PreWedding
+:TimeSpan_PreWedding rdf:type owl:NamedIndividual ,
+                              crm:E52_Time-Span ;
+                     rdfs:label "Pre-wedding Phase" .
+
+
+###  http://example.org/nepal-marriage-rituals#VedicTradition
+:VedicTradition rdf:type owl:NamedIndividual ,
+                         crm:E55_Type ;
+                rdfs:label "Vedic Ritual Tradition" .
+
+
+###  http://example.org/nepal-marriage-rituals#VermilionPowder
+:VermilionPowder rdf:type owl:NamedIndividual ,
+                          crm:E22_Man-Made_Object ;
+                 rdfs:label "Vermilion Powder used in marriages" .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

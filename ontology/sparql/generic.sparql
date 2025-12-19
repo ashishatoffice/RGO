@@ -1,0 +1,24 @@
+PREFIX : <https://www.ritualgrammar.org/ontology/>
+PREFIX np: <https://www.ritualgrammar.org/ontology/nepal/>
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?participant ?participantLabel ?event ?eventLabel ?activity ?activityLabel
+WHERE {
+  # Find all marriage-related events
+  ?event a crm:E5_Event ;
+         rdfs:label ?eventLabel .
+  
+  # Get participants in these events
+  ?participant crm:P11i_participated_in ?event ;
+               a crm:E21_Person ;
+               rdfs:label ?participantLabel .
+  
+  # Find activities within events
+  OPTIONAL {
+    ?event crm:P9_consists_of ?activity .
+    ?activity a crm:E7_Activity ;
+              rdfs:label ?activityLabel .
+  }
+}
+ORDER BY ?participantLabel ?eventLabel ?activityLabel

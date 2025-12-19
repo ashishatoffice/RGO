@@ -1,0 +1,20 @@
+#Querying a micro ritual that is common in Hindu marriage and Buddhist marriage
+#Though nothing found but has potential
+
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX : <http://example.org/nepal-marriage-rituals#>
+
+SELECT DISTINCT ?microRitual ?ritualLabel
+WHERE {
+  # Find micro rituals 
+  ?microRitual crm:P2_has_type :MicroRitual ;
+               rdfs:label ?ritualLabel .
+
+  # It must be part of a Hindu marriage
+  ?hinduMarriage crm:P2_has_type :HinduMarriage ;
+                 crm:P9_consists_of ?microRitual .
+
+  # It must also be part of a Buddhist marriage
+  ?buddhistMarriage crm:P2_has_type :BuddhistMarriage ;
+                    crm:P9_consists_of ?microRitual .
+}

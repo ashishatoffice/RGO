@@ -1,0 +1,16 @@
+<div class="tree-node">
+    <div class="node-content" data-id="{{ node.id }}">
+        <div class="expander {% if node.children %}has-children{% endif %}">
+            {% if node.children %}▶{% endif %}
+        </div>
+        <span class="label">{{ node.label }}</span>
+    </div>
+
+    {% if node.children %}
+    <div class="children-container">
+        {% for child in node.children %}
+        {% include "navigator/tree_node.html" with node=child %}
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
