@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **Ritual Grammar Ontology** is a knowledge-graph–based modeling framework designed to represent, analyze, and compare ritual practices across religious sects and cultural communities in **Nepal**, with a view toward future extension to **India and the wider Indian subcontinent**.
+The **Ritual Grammar Ontology** is a knowledge-graph–based modeling framework designed to represent, analyze, and compare ritual practices across religious sects and cultural communities in **Nepal**, with a view toward future extension to **wider Indian subcontinent**.
 
 This ontology is **not intended as a definitive or exhaustive model of rituals**, but rather as a **use case and methodological proposal** demonstrating how complex ritual practices can be modeled as:
 
