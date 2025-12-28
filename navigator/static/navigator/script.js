@@ -1,42 +1,69 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Handling tree expansion
-    document.querySelectorAll('.node-content').forEach(element => {
-        element.addEventListener('click', (e) => {
-            e.stopPropagation();
 
-            // Toggle selection
-            document.querySelectorAll('.node-content').forEach(el => el.classList.remove('active'));
-            element.classList.add('active');
+    // Handle toggle between Inferred/Asserted
+    const toggle = document.getElementById('toggle-inferred');
+    toggle.addEventListener('change', async () => {
+        window.isInferred = toggle.checked;
+        await reloadTree();
+        clearDetails();
+    });
 
-            // Load details
-            const nodeId = element.dataset.id;
-            loadDetails(nodeId);
+    // Delegate clicks on tree nodes
+    document.getElementById('sidebar').addEventListener('click', (e) => {
+        const element = e.target.closest('.node-content');
+        if (!element) return;
 
-            // Expand/Collapse if it has children
-            const parentLi = element.parentElement;
-            const childrenContainer = parentLi.querySelector('.children-container');
-            const expander = element.querySelector('.expander');
+        e.stopPropagation();
 
-            if (childrenContainer) {
-                const isExpanded = childrenContainer.classList.contains('expanded');
-                if (isExpanded) {
-                    childrenContainer.classList.remove('expanded');
-                    if (expander) expander.classList.remove('open');
-                } else {
-                    childrenContainer.classList.add('expanded');
-                    if (expander) expander.classList.add('open');
-                }
-            }
-        });
+        const nodeId = element.dataset.id;
+
+        // Toggle selection
+        document.querySelectorAll('.node-content').forEach(el => el.classList.remove('active'));
+        element.classList.add('active');
+
+        loadDetails(nodeId);
+
+        // Expand / Collapse
+        const treeNode = element.parentElement;
+        const childrenContainer = treeNode.querySelector(':scope > .children-container');
+        const expander = element.querySelector('.expander');
+        if (childrenContainer) {
+            const expanded = childrenContainer.classList.toggle('expanded');
+            expander?.classList.toggle('open', expanded);
+        }
     });
 });
 
+// Reload tree from backend when inferred/ asserted changes
+async function reloadTree() {
+    const inferredParam = window.isInferred ? 'true' : 'false';
+    const response = await fetch(`/navigation/?inferred=${inferredParam}`);
+    const htmlText = await response.text();
+
+    // Extract the tree-root HTML from the response
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = htmlText;
+    const newTreeRoot = tempDiv.querySelector('.tree-root');
+    const currentTreeRoot = document.querySelector('.tree-root');
+    if (newTreeRoot && currentTreeRoot) {
+        currentTreeRoot.replaceWith(newTreeRoot);
+    }
+}
+
+// Clear the details panel
+function clearDetails() {
+    const contentArea = document.getElementById('details-area');
+    contentArea.innerHTML = '<div style="display:flex; align-items:center; justify-content:center; height:100%; opacity:0.3;"><p>Select a node to view details</p></div>';
+}
+
+// Load node details
 async function loadDetails(nodeId) {
     const contentArea = document.getElementById('details-area');
     contentArea.innerHTML = '<div style="color:var(--text-color); opacity:0.5;">Loading...</div>';
 
     try {
-        const response = await fetch(`/details/?id=${encodeURIComponent(nodeId)}`);
+        const inferredParam = window.isInferred ? '&inferred=true' : '';
+        const response = await fetch(`/details/?id=${encodeURIComponent(nodeId)}${inferredParam}`);
         const data = await response.json();
 
         if (data.error) {
@@ -51,12 +78,12 @@ async function loadDetails(nodeId) {
     }
 }
 
+// Render details panel
 function renderDetails(data) {
     const contentArea = document.getElementById('details-area');
 
     let propertiesHtml = data.properties.map(p => {
         const label = p.predicate_label || p.predicate.split('#').pop().split('/').pop();
-
         let valueHtml;
         if (p.is_uri) {
             const displayValue = p.object_label || p.object.split('#').pop().split('/').pop();
@@ -74,8 +101,7 @@ function renderDetails(data) {
     }).join('');
 
     const title = data.id.split('#').pop();
-    const encodedId = encodeURIComponent(data.id);
-    const describeUrl = `/sparql/?run=true&query=DESCRIBE <${data.id}>`; // No component encoding for URI structure components
+    const describeUrl = `/sparql/?run=true&query=DESCRIBE <${data.id}>${window.isInferred ? '&inferred=true' : ''}`;
 
     contentArea.innerHTML = `
         <div class="details-card">

@@ -109,6 +109,22 @@
                     Browse the hierarchical structure of rituals, events, and actors visually.
                 </div>
             </a>
+<!--
+            <a href="{% url 'navigate_inferred' %}" class="card">
+                <div class="card-icon">🧠</div>
+                <div class="card-title">Navigator (Inferred)</div>
+                <div class="card-desc">
+                    Browse the model with full logical inferences and reasoning applied.
+                </div>
+            </a>
+-->
+            <a href="{% url 'navigate_events' %}" class="card">
+                <div class="card-icon">📅</div>
+                <div class="card-title">Events by Type</div>
+                <div class="card-desc">
+                    Navigate through Ritual Types specifically to find assigned Events.
+                </div>
+            </a>
 
             <a href="{% url 'sparql' %}" class="card">
                 <div class="card-icon">⚡</div>
